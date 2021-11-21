@@ -1,0 +1,31 @@
+{
+	"name": "rick-and-morty-about-characters",
+	"version": "1.0.0",
+	"description": "Web app that consume rick and morty API and show characters and its details.",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "webpack --watch --config webpack.config.dev.js & sass --watch public:dist"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/marskdev/rick-and-morty-about-characters.git"
+	},
+	"keywords": [
+		"javacript"
+	],
+	"author": "Marcial Ambriz",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/marskdev/rick-and-morty-about-characters/issues"
+	},
+	"homepage": "https://github.com/marskdev/rick-and-morty-about-characters#readme",
+	"devDependencies": {
+		"@babel/core": "^7.16.0",
+		"babel-loader": "^8.2.3",
+		"html-webpack-plugin": "^5.5.0",
+		"pug-loader": "^2.4.0",
+		"sass": "^1.43.4",
+		"webpack": "^5.64.1",
+		"webpack-cli": "^4.9.1"
+	}
+}
