@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	mode: "development",
@@ -7,6 +8,17 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "[name].bundle.js",
+		assetModuleFilename: "assets/images/[name][ext]",
+	},
+	resolve: {
+		alias: {
+			pages: path.resolve(__dirname, "src/pages"),
+			utils: path.resolve(__dirname, "src/utils"),
+			styles: path.resolve(__dirname, "src/styles"),
+			images: path.resolve(__dirname, "src/static/images/"),
+			templates: path.resolve(__dirname, "src/templates"),
+			components: path.resolve(__dirname, "src/components"),
+		},
 	},
 	module: {
 		rules: [
@@ -26,11 +38,22 @@ module.exports = {
 					},
 				},
 			},
+			{
+				test: /\.s[ac]ss$/i,
+				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: "asset/resource",
+			},
 		],
 	},
 	plugins: [
 		new HtmlPlugin({
 			template: "./public/index.pug",
+		}),
+		new MiniCssExtractPlugin({
+			filename: "[name].bundle.css",
 		}),
 	],
 };
