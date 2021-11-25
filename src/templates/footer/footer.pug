@@ -1,0 +1,26 @@
+mixin socialLinks(item)
+  li.nav-item.pe-2
+    a.nav-link.p-2.fs-4.bg-secondary.rounded-circle.text-white.fab(class=item.icon href=item.link target="_blank")
+
+// FOOTER
+footer.container-fluid.bg-dark.text-white.mt-5
+  .row.py-4.border-top.d-flex.flex-wrap.justify-content-center.justify-content-between-md.align-items-center
+    .col-5
+      a.mb-1.fs-1.text-decoration-none.text-white(href=portfolio target="_blank") #{name}
+      ul.nav.justify-content-start
+        each link in socialLinks
+          +socialLinks(link)
+    .col-5.d-flex.flex-column.align-items-end
+      img(src=logoSmall, alt="Rick and morty logo" width="150" )
+      a(href="#" role="button").btn.btn-light Watch API Docs
+  .row.py-3.border-top.d-flex.flex-wrap.justify-content-center.justify-content-between-md.align-items-center
+    p.col-md-4.mb-0.text-muted &copy; #{year} MarskDev
+    ul.nav.col-md-6.justify-content-end
+      li.nav-item
+        a.nav-link.px-2.text-muted(href='index.html') Home
+      li.nav-item
+        a.nav-link.px-2.text-muted(href='#characters') Characters
+      li.nav-item
+        a.nav-link.px-2.text-muted(href='#locations') Locations
+      li.nav-item
+        a.nav-link.px-2.text-muted(href='#episodes') Episodes
