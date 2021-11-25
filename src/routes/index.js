@@ -35,6 +35,7 @@ const router = async () => {
 				document.getElementById("characterModal")
 			);
 			myModal.toggle();
+			router();
 		});
 	});
 };
