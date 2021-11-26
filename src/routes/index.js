@@ -28,7 +28,6 @@ const router = async () => {
 		card.addEventListener("click", async () => {
 			let id = card.children[0].textContent;
 
-			console.log("Click on card ", id);
 			content.innerHTML += await Character(id);
 
 			const myModal = new bootstrap.Modal(
@@ -36,6 +35,14 @@ const router = async () => {
 			);
 			myModal.toggle();
 			router();
+		});
+	});
+
+	const pagLink = document.querySelectorAll(".page-link");
+
+	pagLink.forEach((link) => {
+		link.addEventListener("click", () => {
+			window.scrollTo(0, 0);
 		});
 	});
 };

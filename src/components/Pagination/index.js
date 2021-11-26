@@ -1,7 +1,8 @@
 const template = require("./pagination.pug");
 
-const Pagination = (data) => {
-	return template(data);
+const Pagination = (page) => {
+	const pathURL = location.pathname;
+	return template({ pathURL, page });
 };
 
 export default Pagination;

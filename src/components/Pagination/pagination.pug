@@ -1,14 +1,27 @@
+mixin pages(page)
+  - var amountLinks = page < 3 ? page+3 : page+2;
+  //- if page > 4
+  //-   li.page-item(style="pointer-events: none")
+  //-     a.page-link(href='#' ) ...
+  - for (var i = page-2; i <= amountLinks ; i++) {
+    if i > 1 && i < 42
+      li.page-item(class=`${page === i ? "active": ""}` style=`${page === i ? "pointer-events: none": ""}`)
+        a.page-link(href=`${pathURL}#/page/${i}`) #{i}
+  - }
+  //- if page < 39
+  //-   li.page-item(style="pointer-events: none")
+  //-     a.page-link(href='#' ) ...
+
 nav.m-5
-  ul.pagination.justify-content-center
-    li.page-item.disabled
-      a.page-link(href='#')
-        span &laquo;
-    li.page-item.active(style="pointer-events: none")
-      a.page-link(href='#') 1
-    li.page-item
-      a.page-link(href='#') 2
-    li.page-item
-      a.page-link(href='#') 3
-    li.page-item
-      a.page-link(href=next)
+  ul.pagination.pagination.justify-content-center
+    li.page-item(class=`${page < 2 ? "disabled" : ""}`)
+        a.page-link(href=`${page === 2 ? pathURL : pathURL+"#/page/"+(page-1)}`)
+          span &laquo;
+    li.page-item(class=`${page === 1 ? "active": ""}` style=`${page === 1 ? "pointer-events: none": ""}`)
+      a.page-link(href=`${pathURL}`) 1
+    +pages(page)
+    li.page-item(class=`${page === 42 ? "active": ""}` style=`${page === 42 ? "pointer-events: none": ""}`)
+      a.page-link(href=`${pathURL}#/page/42`) 42
+    li.page-item(class=`${page === 42 ? "disabled" : ""}`)
+      a.page-link(href=`${page === 42 ? "#" : pathURL+"#/page/"+(page+1)}`)
         span &raquo;
