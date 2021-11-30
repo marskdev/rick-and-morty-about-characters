@@ -3,6 +3,8 @@ const API = "https://rickandmortyapi.com/api/character/";
 const getData = async (data) => {
 	const apiURL = data.id
 		? `${API}${data.id}`
+		: data.search
+		? `${API}?page=${data.page}&name=${data.search}`
 		: data.page
 		? `${API}?page=${data.page}`
 		: API;

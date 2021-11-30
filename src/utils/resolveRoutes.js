@@ -1,9 +1,8 @@
 const resolveRoutes = (route) => {
-	if (route.length <= 3) {
-		let validRoute = route === "/" ? route : "/:id";
-		return validRoute;
+	if (route[1] === "character" || route[1] === "search") {
+		return `/${route[1]}`;
 	}
-	return `/${route}`;
+	return "/";
 };
 
 export default resolveRoutes;

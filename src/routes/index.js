@@ -5,9 +5,12 @@ import Character from "components/Character";
 import Error404 from "pages/Error404";
 import "styles/main.sass";
 import resolveRoutes from "../utils/resolveRoutes";
+import getHash from "../utils/getHash";
+import Search from "../pages/Search";
 
 const routes = {
 	"/": Home,
+	"/search": Search,
 };
 
 const router = async () => {
@@ -15,7 +18,9 @@ const router = async () => {
 	const content = null || document.getElementById("content");
 	const footer = null || document.getElementById("footer");
 
-	let route = await resolveRoutes("/");
+	console.log("routes.js", await resolveRoutes(await getHash()));
+
+	let route = await resolveRoutes(getHash());
 	let render = routes[route] ? routes[route] : Error404;
 
 	header.innerHTML = await Header();
@@ -44,6 +49,14 @@ const router = async () => {
 		link.addEventListener("click", () => {
 			window.scrollTo(0, 0);
 		});
+	});
+
+	const input = document.getElementById("search");
+
+	input.addEventListener("keyup", (event) => {
+		if (event.keyCode === 13) {
+			location.hash = `/search/${input.value}/page/1`;
+		}
 	});
 };
 
