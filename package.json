@@ -6,7 +6,7 @@
 	"scripts": {
 		"build": "webpack --config webpack.config.js",
 		"start": "webpack --watch --config webpack.config.dev.js & sass --watch public:dist",
-		"develop": "webpack --watch --config webpack.config.dev.js"
+		"develop": "webpack serve --config webpack.config.dev.js"
 	},
 	"repository": {
 		"type": "git",
@@ -33,6 +33,7 @@
 		"sass": "^1.43.4",
 		"sass-loader": "^12.3.0",
 		"webpack": "^5.64.1",
-		"webpack-cli": "^4.9.1"
+		"webpack-cli": "^4.9.1",
+		"webpack-dev-server": "^4.6.0"
 	}
 }
