@@ -9,7 +9,7 @@ mixin card(item)
         h5.card-title #{item.name}
 
 .container.mt-5.pt-5
-  h2 Results
+  h2.mt-4.pt-4.mt-sm-2.pt-sm-2.mt-md-1.pt-md-1 Results
   .row.row-cols-2.row-cols-md-3.row-cols-lg-4.g-2.g-sm-3.mt-3
     each character in characters 
       +card(character)
