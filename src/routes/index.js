@@ -18,8 +18,6 @@ const router = async () => {
 	const content = null || document.getElementById("content");
 	const footer = null || document.getElementById("footer");
 
-	console.log("routes.js", await resolveRoutes(await getHash()));
-
 	let route = await resolveRoutes(getHash());
 	let render = routes[route] ? routes[route] : Error404;
 
